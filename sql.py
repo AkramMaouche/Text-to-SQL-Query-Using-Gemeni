@@ -1,9 +1,9 @@
-import sqllite3 
+import sqlite3 
 
 #Define connection 
-connection = sqllite3.connect("")
+connection = sqlite3.connect("Student.db")
 #Cursor
-curr = connection.cursor("Student.db") 
+curr = connection.cursor() 
 
 #Create Table 
 table_info = ''' 
@@ -74,4 +74,10 @@ curr.execute(''' INSERT INTO STUDENT VALUES
              
               ''')
 
+#desplay Records 
+print("The Inserted Records are :")
+data = curr.execute('''SELECT * FROM STUDENT''')
+
+connection.commit()
+connection.close()
 
